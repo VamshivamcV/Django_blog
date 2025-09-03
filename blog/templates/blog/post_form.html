@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Blog Center</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            body{
+                margin: 3rem;
+                padding: 2rem;
+            }
+            h1{
+                color: darkgreen;
+            }
+            .card{
+                border: solid 1px green;
+                border-radius: 20px;
+                margin: 0.5rem;
+                padding: 1rem;
+                width: 50%;
+            }
+            .card p label{
+                color: green;
+            }
+            .card p input{
+                border: solid 1px green;
+                border-radius: 10px;
+                width: 15rem;
+                height: 20px;
+                margin-left: 20px;
+            }
+            .card p textarea{
+                border: solid 1px green;
+                border-radius: 10px;
+                width: 15rem;
+            }
+            a{
+                text-decoration: none;
+                color: rgb(74, 172, 74);
+            }
+            button{
+                background-color: green;
+                color: white;
+                border-radius: 10px;
+                font-size: larger;
+                padding: 0.5rem;
+            }
+            button:hover{
+                background-color: rgb(4, 175, 4);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>New/Edit Post</h1>
+        <form method="post" class="card">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save</button>
+        </form>
+    </body>
+</html>
+

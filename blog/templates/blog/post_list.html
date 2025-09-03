@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Blog Center</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            body{
+                margin: 3rem;
+                padding: 2rem;
+            }
+            h1{
+                color: darkgreen;
+            }
+            .card{
+                border: solid 1px green;
+                border-radius: 20px;
+                margin: 0.5rem;
+                padding: 1rem;
+            }
+            a{
+                text-decoration: none;
+                color: rgb(74, 172, 74);
+            }
+            header{
+                display: flex;
+            }
+            header a{
+                position: absolute;
+                right: 0;
+                margin-right: 6rem;
+                padding: 5px;
+                border-radius: 5px;
+                color: green;
+                background-color: lightgreen;
+            }
+            .card #del:hover{
+                color: lightcoral;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <a href="{% url 'post_create'%}">Add a New Post</a>
+        </header>
+        <h1>Blog Posts</h1>
+    {% for post in posts %}
+        <div class="card">
+            <h2><a href="{% url 'post_detail' post.pk %}">{{post.title}}</a></h2>
+            <p>{{post.created_at}}</p>
+            <a href="{% url 'post_delete' post.pk %}" id="del">Delete Post</a>
+        </div>
+    {% endfor %}
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Blog post</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            body{
+                margin: 3rem;
+                padding: 2rem;
+            }
+            h1{
+                color: darkgreen;
+            }
+            .card{
+                border: solid 1px green;
+                border-radius: 20px;
+                margin: 0.5rem;
+                padding: 1rem;
+                width: 20rem;
+                text-align: justify;
+            }
+            a{
+                text-decoration: none;
+                color: rgb(74, 172, 74);
+                background-color: lightgreen;
+                padding: 5px;
+                border-radius: 5px;
+            }
+            a:hover{
+                background-color: green;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <a href="{% url 'post_list' %}">All posts</a>
+        </header>
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.created_at }}</p>
+        <div class="card">
+            <p>{{ post.content }}</p>
+        </div>
+    </body>
+</html>
