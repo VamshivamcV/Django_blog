@@ -1,45 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Blog post</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <style>
-            body{
-                margin: 3rem;
-                padding: 2rem;
-            }
-            h1{
-                color: darkgreen;
-            }
-            .card{
-                border: solid 1px green;
-                border-radius: 20px;
-                margin: 0.5rem;
-                padding: 1rem;
-                width: 20rem;
-                text-align: justify;
-            }
-            a{
-                text-decoration: none;
-                color: rgb(74, 172, 74);
-                background-color: lightgreen;
-                padding: 5px;
-                border-radius: 5px;
-            }
-            a:hover{
-                background-color: green;
-                color: white;
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <a href="{% url 'post_list' %}">All posts</a>
-        </header>
-        <h1>{{ post.title }}</h1>
-        <p>{{ post.created_at }}</p>
-        <div class="card">
-            <p>{{ post.content }}</p>
+
+{% extends "base.html" %}
+
+{% block content %}
+        <div class="bg-white m-8 p-6 rounded-lg">
+            <h1 class="text-2xl text-green-700">{{ post.title }}</h1>
+            <div class="flex justify-between items-center">
+                <p class="text-sm text-gray-500 mb-2">
+                    <strong>Author:</strong> {{ post.author }}
+                </p>
+            {% if request.user == post.author %}
+            <a href="{% url 'post_edit' post.pk %}" 
+              class="hover:text-green-600 text-green-800 mr-5 md:mr-10"
+              >Update Post</a>
+              {% endif %}
+            </div>
+            <p class="text-sm text-gray-500">
+                {{ post.created_at|date:"F j, Y, g:i a" }}
+            </p>
+            <div class=" py-[5rem] px-[1rem] bg-green-100 rounded-lg my-8">
+                <p class="whitespace-pre-line">{{ post.content }}</p>
+            </div>
         </div>
-    </body>
-</html>
+
+        {% endblock content %}

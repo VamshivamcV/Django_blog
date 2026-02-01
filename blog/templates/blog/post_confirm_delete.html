@@ -1,53 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Blog post</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <style>
-            body{
-                margin: 3rem;
-                padding: 2rem;
-            }
-            h1{
-                color: darkgreen;
-            }
-            .card{
-                border: solid 1px green;
-                border-radius: 20px;
-                margin: 0.5rem;
-                padding: 1rem;
-                width: 20rem;
-                text-align: justify;
-            }
-            button{
-                background-color: lightgreen;
-                border-radius: 5px;
-                margin-bottom: 20px;
-            }
-            button:hover{
-                background-color: darkgreen;
-                color: white;
-            }
-            a{
-                text-decoration: none;
-                color: rgb(74, 172, 74);
-            }
-            a:hover{
-                background-color: green;
-                color: white;
-                padding: 5px;
-                border-radius: 5px;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Delete "{{ post.title }}"?</h1>
-        <form method="post">
+
+{% extends "base.html" %}
+
+{% block content %}
+    <body class="bg-gray-100 p-6 text-gray-800  mt-10">
+        <div class="m-10 bg-white p-10 rounded-lg">
+            <h1 class="text-4xl">Delete "{{ post.title }}"?</h1>
+        <form method="post" class="mt-10 bg-red-100 hover:bg-red-200 m-4 p-2 rounded-lg w-[8rem] flex justify-center ">
             {% csrf_token %}
             <button type="submit">Confirm Delete</button>
         </form>
-        <a href="{% url 'post_detail' post.pk %}">Cancel</a>
+        <a href="{% url 'post_detail' post.pk %}" class="bg-green-100 hover:bg-green-200 m-4 p-2 rounded-lg">Cancel</a>
+        </div>
     </body>
 </html>
 
+{% endblock content %}
 
