@@ -1,0 +1,42 @@
+# ======================
+# Django
+# ======================
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+media/
+
+# ======================
+# Python
+# ======================
+.env
+.venv/
+venv/
+ENV/
+env/
+*.egg-info/
+dist/
+build/
+
+# ======================
+# Static files
+# ======================
+staticfiles/
+
+# ======================
+# Tailwind / Node
+# ======================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional: ignore Tailwind source but keep built CSS
+# tailwind/
+# static/css/main.css
+
+# ======================
+# OS / Editor
+# =================
